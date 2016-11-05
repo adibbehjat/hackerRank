@@ -14,7 +14,11 @@ for tracks in xrange(k):
 	# Identify the row, starting column, and ending column 
 	row,col_s,col_e = [int(x) for x in raw_input().strip().split()]
 	
-	# Transform data into index 
+	# Switch index where necessary
+	if col_e < col_s:
+		col_s,col_e = col_e,col_s
+
+	# Transform data into index	
 	i = col_s - 1
 	row = row - 1
 	
