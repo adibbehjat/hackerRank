@@ -1,3 +1,5 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
 # Collect rows, columns and tracks
 n,m,k = [int(x) for x in raw_input().strip().split()]
 
@@ -16,19 +18,33 @@ for tracks in xrange(k):
 	
 	# Switch index where necessary
 	if col_e < col_s:
+		continue
 		col_s,col_e = col_e,col_s
 
 	# Transform data into index	
-	i = col_s - 1
+	col_s = col_s - 1
 	row = row - 1
 	
 	# Modify train_map based on the new collected information
 	if row not in train_map:
-		train_map[row] = {'map':[0]*m,'spots':0}
-	train_map[row]['map'][i:col_e] = [1] * (col_e  - i)
-	train_map[row]['spots'] = sum(train_map[row]['map'])
+		train_map[row] = {'map':[0]*m}
+	train_map[row]['map'][i:col_e] = [1] * (col_e  - col_s)
 
-print n*m - sum([train_map[x]['spots'] for x in train_map])
+# Total space available
+total = n*m
+
+for row in train_map:
+    total -= sum(train_map[row]['map'])
+    
+print total
+
+"""
+
+NEW METHOD
+
+"""
+
+
 
 """
 Prompt: https://www.hackerrank.com/challenges/gridland-metro
