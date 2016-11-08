@@ -35,6 +35,8 @@ if __name__ == '__main__':
 
 
 """
+https://www.hackerrank.com/challenges/pairs
+
 Prompt:
 
 Given N integers, count the number of pairs of integers whose difference is K.
