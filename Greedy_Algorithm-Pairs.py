@@ -1,25 +1,28 @@
-
 def pairs(a,k):
-	a.sort()
-	answer = 0
-	i,j = 0,1
-	while i < len(a) - 1:
-		
-		# Match the correct answer
-		if a[j] - a[i] == k:
-			answer += 1
+	
+    a.sort()
+	
+    answer = 0
+	
+    i,j = 0,1
 
-		elif a[j] - a[i] > k:
-			i += 1
-			j = i
+	while j < len(a):
 		
-		j += 1
-			
-		if j > len(a) - 1:
+        # Collect difference
+        dif = a[j] - a[i]
+
+		# Select path based on dif outcome
+		if dif == k:
+			answer += 1
+			j += 1
+
+		elif dif > k:
 			i += 1
-			j = i + 1
+
+		else:
+			j += 1
 		
-	#a contains array of numbers and k is the value of difference	
+	#a contains array of numbers and k is the value of difference
 	return answer
 
 # Tail starts here
